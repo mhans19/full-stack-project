@@ -1,5 +1,5 @@
 {
-  "name": "full-stack-project",
+  "name": "timed-out",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -22,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhans19/full-stack-project.git"
+    "url": "git+https://github.com/mhans19/timed-out.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mhans19/full-stack-project/issues"
+    "url": "https://github.com/mhans19/timed-out/issues"
   },
-  "homepage": "https://github.com/mhans19/full-stack-project#readme"
+  "homepage": "https://github.com/mhans19/timed-out#readme"
 }
