@@ -10,18 +10,18 @@ User.hasMany(Contribution, {
   foreignKey: 'user_id'
   });
 // Project Associations
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
+Project.hasMany(User, {
+  foreignKey: 'project_id'
 }); 
 Project.hasMany(Contribution, {
-  foreignKey: 'projectt_id'
+  foreignKey: 'project_id'
   });
 // Contribution Associations
 Contribution.belongsTo(User, {
 foreignKey: 'user_id'
 });
 Contribution.belongsTo(Project, {
-foreignKey: 'projectt_id'
+foreignKey: 'project_id'
 });
 
 // EXPORT MODULE
