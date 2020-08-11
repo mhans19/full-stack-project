@@ -9,10 +9,7 @@ router.get('/', (req, res) => {
                     'contribution_hours',
                     'project_id', 
                     'user_id'
-                    ],
-            order: [
-                ['created_at', 'DESC']
-            ]
+                    ]
         })
         .then(dbContributionData => res.json(dbContributionData))
         .catch(err => {

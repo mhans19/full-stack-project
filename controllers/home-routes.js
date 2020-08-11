@@ -18,8 +18,7 @@ router.get('/', (req, res) => {
                        'contribution_type', 
                        'contribution_hours',
                        'project_id', 
-                       'user_id', 
-                       'created_at'
+                       'user_id'
                       ],
           include: {
             model: User,
@@ -85,8 +84,7 @@ router.get('/signup', (req, res) => {
                          'contribution_type', 
                          'contribution_hours',
                          'project_id', 
-                         'user_id', 
-                         'created_at'
+                         'user_id'
                         ],
             include: {
               model: User,
