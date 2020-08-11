@@ -23,19 +23,20 @@ app.set('view engine', 'handlebars')
 
 // SET UP SESSION
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 const sess = {
-  secret: 'Super secret secret',  
-  //secret: process.env.SECRET, This will come in handy when we push to heroku
+  secret: 'Super secret secret',
   cookie: {
-      maxAge: 30 * 60000,
-      sameSite: 'strict'
+    maxAge: 30 * 60000,
+    sameSite: 'strict'
   },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-      db: sequelize
+    db: sequelize
   })
 };
+
 app.use(session(sess));
 
 // ROUTES

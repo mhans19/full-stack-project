@@ -10,6 +10,14 @@ Contribution.init(
         primaryKey: true,
         autoIncrement: true
       },
+      contribution_type: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      contribution_hours: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -25,14 +33,6 @@ Contribution.init(
           model: 'project',
           key: 'id'
         }
-      },
-      contribution_type: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      contribution_hours: {
-        type: DataTypes.INTEGER,
-        allowNull: false
       }
     },
     {

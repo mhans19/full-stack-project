@@ -10,8 +10,8 @@ User.hasMany(Contribution, {
   foreignKey: 'user_id'
   });
 // Project Associations
-Project.hasMany(User, {
-  foreignKey: 'project_id'
+Project.belongsTo(User, {
+  foreignKey: 'user_id'
 }); 
 Project.hasMany(Contribution, {
   foreignKey: 'project_id'
