@@ -1,0 +1,34 @@
+<!--project-info-->
+{{>project-info project }}
+<!---->
+<form class="container">
+    <form class="create-project-form" id="conntributionForm">
+        <div class="form-group">
+          <label for="project-contributions">Select Conntribution:</label>
+          <select class="form-control" type="text" name="project-contributions" id="project-contributions" form="conntributionForm">
+            <option value="Option1">Option1</option>
+            <option value="Option2">Option2</option>
+            <option value="Option3">Option3</option>
+            <option value="Option4">Option4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="hours">Hours Spent on Conntribution:</label>
+          <input class="form-control" type="text" id="hours" />
+        </div>
+        <div class="form-group">
+            <label for="contribution-description">Description:</label>
+            <input class="form-control" type="text" id="contribution-description" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create Project</button>
+        </div>
+      </form>
+      <script src="/javascript/.js"></script>
+    </form>
+  </form>
+<!--contribution-->
+<div class="bg btn-primary">
+    {{>conntributions project.conntributions}}
+</div>
+<!---->
