@@ -21,6 +21,7 @@ router.get('/', withAuth, (req, res) => {
             attributes: ['id', 
                          'contribution_type', 
                          'contribution_hours',
+                         'contribution_description',
                          'project_id', 
                          'user_id'
                         ],
@@ -62,6 +63,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
                 attributes: ['id', 
                             'contribution_type', 
                             'contribution_hours',
+                            'contribution_description',
                             'project_id', 
                             'user_id'
                             ],
