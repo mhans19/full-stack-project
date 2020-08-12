@@ -13,15 +13,15 @@
   <div class="wrapper">
       <header>
         <h1>
-          <a href="/">Timed Out</a>
+          <a href="/">TIMED <img src="https://img.icons8.com/ultraviolet/34/000000/clock.png"/>UT</a>
         </h1>
         <nav>
           {{#if loggedIn}}
-          <a href="/dashboard">Personal Projects</a>
-          <button id="logout" class="btn-no-style">Logout</button>
+          <a href="/dashboard"><img src="https://img.icons8.com/ultraviolet/24/000000/folder-invoices.png"/> Your Projects</a>
+          <button id="logout" class="btn-no-style"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Logout</button>
           {{else}}
-          <a href="/login">Login</a>
-          <a href="/signup">Sign-up</a>
+          <a href="/login"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Login</a>
+          <a href="/signup"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Sign-up</a>
           {{/if}}
         </nav>
       </header>
@@ -29,7 +29,7 @@
       {{{ body }}}
     </main>
     <footer>
-      Thanks for visiting!
+      Thanks for contributing!
     </footer>
   </div>
 {{#if loggedIn}}

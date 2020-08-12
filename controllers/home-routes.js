@@ -65,7 +65,8 @@ router.get('/signup', (req, res) => {
   }
   
   res.render('signup');
-});
+}); 
+
 // GET ONE PROJECT  
   router.get('/project/:id', (req, res) => {
     Project.findOne({

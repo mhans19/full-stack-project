@@ -13,11 +13,12 @@
 </section>
 {{/if}}
 {{#if loggedIn}}
-<h3 class = "text-center font-weight-bold"><a href = "/personalprojects"> Create a new project!</a></h3>
+<h3 class = "text-center font-weight-bold"><a href = "/dashboard"> Create a new project!</a></h3>
 {{else}}
 <div class="container m-4 text-center font-weight-bold">
-  <h2>Uh Oh!</h2>
-  <p class='text-secondary'>You must be <a href = "/login">logged in</a> to create a project!</p>
+  <img src="https://img.icons8.com/ultraviolet/80/000000/crying.png"/>
+  <h1 class = "fonct-weight-bold">Uh Oh!</h1>
+  <p class='text-secondary'>You must <a href = "/login">login</a> to contribut to a project!</p>
 </div>
 {{/if}}
 
