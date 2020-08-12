@@ -8,12 +8,8 @@ router.get('/', (req, res) => {
                     'contribution_type', 
                     'contribution_hours',
                     'project_id', 
-                    'user_id', 
-                    'created_at'
-                    ],
-            order: [
-                ['created_at', 'DESC']
-            ]
+                    'user_id'
+                    ]
         })
         .then(dbContributionData => res.json(dbContributionData))
         .catch(err => {
@@ -28,6 +24,7 @@ router.post('/', withAuth, (req, res) => {
         Contribution.create({
                 contribution_type: req.body.contribution_type,
                 contribution_hours: req.body.contribution_hours,
+                project_id: req.body.project_id,
                 // use the id from the session
                 user_id: req.session.user_id
             })

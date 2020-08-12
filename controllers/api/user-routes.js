@@ -23,8 +23,7 @@ router.get('/:id', (req, res) => {
                     model: Project,
                     attributes: ['id', 
                                  'title', 
-                                 'description', 
-                                 'created_at']
+                                 'description']
                 },
                 {
                     model: Contribution,
@@ -32,8 +31,7 @@ router.get('/:id', (req, res) => {
                                 'contribution_type', 
                                 'contribution_hours',
                                 'project_id', 
-                                'user_id', 
-                                'created_at'
+                                'user_id'
                                 ],
                     include: {
                     model: User,
