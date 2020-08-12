@@ -1,0 +1,33 @@
+{{#if loggedIn}}
+<div class="container m-4">
+  <form>
+    <form class="create-project-form">
+      <div class="form-group row">
+        <label for="project-title">Title:</label>
+        <input class="form-control" type="text" id="project-title" />
+      </div>
+      <div class="form-group row">
+        <label for="project-description">Description:</label>
+        <input class="form-control" type="text"id="project-description" />
+      </div>
+      <div class="form-group row">
+        <button type="submit" class="btn btn-primary btn-block font-weight-bold">Create Project</button>
+      </div>
+    </form>
+  </form>
+</div>
+
+{{#if projects.length}}
+<section>
+  <h2 class = "text-center font-weight-bold">Your Projects</h2>
+  <div class= "text-center">
+    {{#each projects as |project|}}
+    <div class = "border border-primary rounded my-2">
+      {{> project-info project }}
+      {{!-- <a href="/personalprojects/edit/{{project.id}}" class="edit-link">Edit project</a> --}}
+    </div>
+    {{/each}}
+  </div>
+</section>
+{{/if}}
+<script src="/javascript/add-project.js"></script>

@@ -1,28 +1,24 @@
+{{#if projects.length}}
+<section>
+  <h2 class = "text-center font-weight-bold">Available Projects</h2>
+  <div id = "homepage" >
+    <div class= "text-center">
+      {{#each projects as |project|}}
+      <div class = "border border-primary rounded my-2">
+        {{> project-info project}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
 {{#if loggedIn}}
-<div class="container m-4">
-  <form>
-    <form class="create-project-form">
-      <div class="form-group">
-        <label for="project-title">Title:</label>
-        <input class="form-control" type="text" id="project-title" />
-      </div>
-      <div class="form-group">
-        <label for="project-description">Description:</label>
-        <input class="form-control" type="text"id="project-description" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create Project</button>
-      </div>
-    </form>
-    <script src="/javascript/.js"></script>
-  </form>
-</div>
+<h3 class = "text-center font-weight-bold"><a href = "/personalprojects"> Create a new project!</a></h3>
 {{else}}
-<div class="container m-4">
+<div class="container m-4 text-center font-weight-bold">
   <h2>Uh Oh!</h2>
-  <p class='text-secondary'>You must be logged in to create a project!</p>
+  <p class='text-secondary'>You must be <a href = "/login">logged in</a> to create a project!</p>
 </div>
 {{/if}}
-<div class="bg-primary">
-  {{> project-info project}}
-</div>
+
+
