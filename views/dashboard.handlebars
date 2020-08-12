@@ -22,12 +22,12 @@
     </form>
 </div>
 <section class = "font-weight-bold text-center">
-  <h2 class = "text-center font-weight-bold">Your Projects</h2>
-  <div class= "text-center">
+  <h3 class = "text-center font-weight-bold">Your Projects</h3>
+  <div>
     {{#each projects as |project|}}
     <div class = "border border-primary rounded my-2">
-      {{> project-info project }}
-      {{!-- <a href="/personalprojects/edit/{{project.id}}" class="edit-link">Edit project</a> --}}
+        {{> project-info project}}
+        <a href="/project/{{project.id}}">Contribute to This Project!</a>
     </div>
     {{/each}}
   </div>

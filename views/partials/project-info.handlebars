@@ -1,9 +1,15 @@
-<article class="bg-white container">
-    <h2 class="row text-primary">
-        <a href="?">Project Title</a>
-    </h2>
-    <div class="row">
-        <h4 class="text-primary">Project Description:</h4></br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, aliquam enim nemo quae praesentium assumenda tenetur placeat quasi quos quidem officia veniam porro obcaecati quaerat accusantium, omnis voluptatum nostrum fugit?</p>
-    </div>
+<article class="project">
+  <div class="title">
+    <a href="/project/{{id}}">
+      {{title}}
+    </a>
+    <p>
+      {{description}}
+    </p>
+  </div>
+  <div class="meta">
+    Published by {{user.username}} on {{format_date created_at}}
+    |
+    <a href="/project/{{id}}">{{contributions.length}} {{format_plural "Contribution" contributions.length}}</a>
+  </div>
 </article>
