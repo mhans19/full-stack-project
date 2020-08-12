@@ -18,6 +18,10 @@ Contribution.init(
         type: DataTypes.INTEGER,
         allowNull: false
       },
+      contribution_description: {
+        type: DataTypes.TEXT,
+        allowNull: false
+      },
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,

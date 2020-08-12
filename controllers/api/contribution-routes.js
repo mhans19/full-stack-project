@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
         attributes: ['id', 
                     'contribution_type', 
                     'contribution_hours',
+                    'contribution_description',
                     'project_id', 
                     'user_id'
                     ]
@@ -24,6 +25,7 @@ router.post('/', withAuth, (req, res) => {
         Contribution.create({
                 contribution_type: req.body.contribution_type,
                 contribution_hours: req.body.contribution_hours,
+                contribution_description: req.body.contribution_description,
                 project_id: req.body.project_id,
                 // use the id from the session
                 user_id: req.session.user_id

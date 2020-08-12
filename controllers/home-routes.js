@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
           attributes: ['id', 
                        'contribution_type', 
                        'contribution_hours',
+                       'contribution_description',
                        'project_id', 
                        'user_id'
                       ],
@@ -83,6 +84,7 @@ router.get('/signup', (req, res) => {
             attributes: ['id', 
                          'contribution_type', 
                          'contribution_hours',
+                         'contribution_description',
                          'project_id', 
                          'user_id'
                         ],
