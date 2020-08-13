@@ -4,27 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timed-Out</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Timed-Out</title>
 </head>
 
 <body>
   <div class="wrapper">
-      <header>
-        <h1>
-          <a href="/">TIMED <img src="https://img.icons8.com/ultraviolet/34/000000/clock.png"/>UT</a>
-        </h1>
-        <nav>
-          {{#if loggedIn}}
-          <a href="/dashboard"><img src="https://img.icons8.com/ultraviolet/24/000000/folder-invoices.png"/> Your Projects</a>
-          <button id="logout" class="btn-no-style"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Logout</button>
-          {{else}}
-          <a href="/login"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Login</a>
-          <a href="/signup"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Sign-up</a>
-          {{/if}}
-        </nav>
-      </header>
+    <header>
+      <h1>
+        <a href="/">TIMED <img src="https://img.icons8.com/ultraviolet/34/000000/clock.png" />UT</a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+        <a href="/dashboard"><img src="https://img.icons8.com/ultraviolet/24/000000/folder-invoices.png" /> Your
+          Projects</a>
+        <button id="logout" class="btn-no-style"><img
+            src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png" /> Logout</button>
+        {{else}}
+        <a href="/login"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png" /> Login</a>
+        <a href="/signup"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png" /> Sign-up</a>
+        {{/if}}
+      </nav>
+    </header>
     <main>
       {{{ body }}}
     </main>
@@ -32,9 +37,9 @@
       Thanks for contributing!
     </footer>
   </div>
-{{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
-{{/if}}
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
