@@ -1,0 +1,29 @@
+{{#if projects.length}}
+<section>
+  <h2 class = "text-center font-weight-bold">Available Projects</h2>
+  {{#if loggedIn}}
+  <h4 class = "text-center font-weight-bold">Select a project to start contributing!</h4>
+  {{/if}}
+  <div id = "homepage" >
+    <div class= "text-center">
+      {{#each projects as |project|}}
+      <div class = "border border-primary rounded my-2">
+        {{> project-info project}}
+        <a href="/project/{{project.id}}">Contribute to This Project!</a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
+{{#if loggedIn}}
+<h3 class = "text-center font-weight-bold"><a href = "/dashboard"> Create a new project!</a></h3>
+{{else}}
+<div class="container m-4 text-center font-weight-bold">
+  <img src="https://img.icons8.com/ultraviolet/80/000000/crying.png"/>
+  <h1 class = "fonct-weight-bold">Uh Oh!</h1>
+  <p class='text-secondary'>You must <a href = "/login">login</a> to contribute to a project!</p>
+</div>
+{{/if}}
+
+
