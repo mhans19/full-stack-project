@@ -1,7 +1,7 @@
 // import the Sequelize constructor from the library
 const Sequelize = require('sequelize');
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
 // create connection to our db
 let sequelize;
