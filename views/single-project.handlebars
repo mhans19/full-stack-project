@@ -1,3 +1,12 @@
+<h2 class = "text-center font-weight-bold">Project Details</h2>
+{{#each this}}
+  <section class = "text-center font-weight-bold text-primary">
+    <h4>{{title}}</h4>
+    <p>{{description}}</p>
+  </section>
+  <div class="row">
+</div>
+{{/each}}
 {{#if loggedIn}}
 <form class="contribution-form">
     <h2 class = "text-center font-weight-bold">Contribute to This Project</h2>
@@ -24,34 +33,48 @@
 </form>
 <script src="/javascript/contribution.js"></script>
 {{/if}}
-<br>
-<h2 class = "text-center font-weight-bold">All Contributions</h2>
+<h2 class = "text-center font-weight-bold">Project Contributions</h2>
+<div id="chartContainer" style="height: 370px; width: 100%;">
+    {{!-- This is where chart goes --}}
+</div>
 {{#each this}}
-  <section class = "text-center font-weight-bold">
-    <h3>{{title}}</h3>
-    <h4>{{description}}</h4>
-    <br>
-  </section>
-  <div class="row">
   {{#each contributions}}
     <div class="col-sm-12">
-      <div class="card">
-        <div class="card-body text-black comment">
-          <div class = "card-title"> 
-            <h5 class = "text-center font-weight-bold">{{user.username}} contributed!</h5> 
-          </div>
-          <div class = "card-text">
-            <p class = "font-weight-bold text-center">Contribution Type: {{this.contribution_type}}
-              |
-              Contribution Hours: {{this.contribution_hours}}
-              |
-              Contribution Description: {{this.contribution_description}}</p> 
-          </div>
-        </div>  
-      </div>
+      <li>
+        {{user.username}} contributed to the project! |
+        Contribution Type: {{this.contribution_type}}
+        |
+        Contribution Hours: {{this.contribution_hours}}
+        |
+        Contribution Description: {{this.contribution_description}}
+      </li>
     </div>
   {{/each}}
-</div>
 {{/each}}
 
 <script src="/javascript/newcontribution.js"></script>
+
+<script>
+window.onload = function () {
+  var options = {
+    animationEnabled: true,
+    axisY: {
+      title: "Hours Contributed"
+    },
+    axisX: {
+      title: "Contribution Type"
+    },
+    data: [{
+      type: "column",
+      yValueFormatString: "#,##0.0#",
+      dataPoints: [
+        { label: "HTML", y: 10 },	
+        { label: "CSS", y: 32 },	
+        { label: "JavaScript", y: 48 },
+        { label: "Node", y: 12 }
+      ]
+    }]
+  };
+  $("#chartContainer").CanvasJSChart(options);
+}
+</script>
