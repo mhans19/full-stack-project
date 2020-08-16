@@ -29,7 +29,20 @@
               <option value="HTML">HTML</option>
               <option value="CSS">CSS</option>
               <option value="JavaScript">JavaScript</option>
+              <option value="APIs">APIs</option>
+              <option value="PHP">PHP</option>
               <option value="Node">Node</option>
+              <option value="OOP">OOP</option>
+              <option value="Express">Express</option>
+              <option value="Shell">Shell</option>
+              <option value="SQL">SQL</option>
+              <option value="ORM">ORM</option>
+              <option value="MVC">MVC</option>
+              <option value="NoSQL">NoSQL</option>
+              <option value="PWA">PWA</option>
+              <option value="React">React</option>
+              <option value="MERN">MERN</option>
+              <option value="State">State</option>
             </select>
           </div>
           <div class="form-group row">
@@ -116,20 +129,90 @@
   </div>
 </div>
 {{!-- Contribution Graphic --}}
+<script>
+  const cont = [];
+</script>
 {{#each this}}
   {{#each contributions}}
   <script>
+  cont.push({
+    "type": "{{{this.contribution_type}}}",
+    "hours": Number("{{{this.contribution_hours}}}")
+  });
+  </script>
+  {{/each}}
+{{/each}}
+<script>
+  const
+    dat = cont,
+    dit = dat.reduce((r, { type, hours }) => {
+        var item = r.find(o => o.type === type);
+        if (!item) {
+            item = { type, hours: 0 };
+            r.push(item);
+        }
+        item.hours += hours;
+        return r;
+    }, []);
+
+  var type = dit.map(function(dit) {
+    return dit.type;
+  });
+
+  var hours = dit.map(function(dit) {
+    return dit.hours;
+  });
+</script>
+
+
+<script>
   window.onload = function () {
   var ctx = document.getElementById('contChart');
-  let type = ["{{{this.contribution_type}}}"]; 
-  let hours = ["{{{this.contribution_hours}}}"];
-
+  
   var data = {
       labels: type,
       datasets: [{
           data: hours,
           label: "Hours",
-          backgroundColor: 'rgb(245, 146, 37)'
+          backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(200, 99, 132, 0.2)',
+                    'rgba(154, 162, 235, 0.2)',
+                    'rgba(385, 206, 86, 0.2)',
+                    'rgba(255, 199, 132, 0.2)',
+                    'rgba(54, 62, 235, 0.2)',
+                    'rgba(255, 106, 86, 0.2)',
+                    'rgba(200, 199, 132, 0.2)',
+                    'rgba(154, 262, 235, 0.2)',
+                    'rgba(385, 106, 86, 0.2)',
+                    'rgba(255, 99, 232, 0.2)',
+                    'rgba(54, 162, 135, 0.2)',
+                    'rgba(255, 206, 186, 0.2)',
+                    'rgba(200, 99, 232, 0.2)',
+                    'rgba(154, 162, 135, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(200, 99, 132, 0.2)',
+                    'rgba(154, 162, 235, 0.2)',
+                    'rgba(385, 206, 86, 0.2)',
+                    'rgba(255, 199, 132, 0.2)',
+                    'rgba(54, 62, 235, 0.2)',
+                    'rgba(255, 106, 86, 0.2)',
+                    'rgba(200, 199, 132, 0.2)',
+                    'rgba(154, 262, 235, 0.2)',
+                    'rgba(385, 106, 86, 0.2)',
+                    'rgba(255, 99, 232, 0.2)',
+                    'rgba(54, 162, 135, 0.2)',
+                    'rgba(255, 206, 186, 0.2)',
+                    'rgba(200, 99, 232, 0.2)',
+                    'rgba(154, 162, 135, 0.2)'
+                ],
+                borderWidth: 1
       }]
   }
     var options = {
@@ -152,5 +235,3 @@
   });
     }
   </script>
-  {{/each}}
-{{/each}}
