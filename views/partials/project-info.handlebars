@@ -1,4 +1,4 @@
-<article class="project">
+{{!-- <article class="project">
   <div class="title">
     <h4>{{title}}</h2>
     <p>
@@ -10,4 +10,17 @@
     |
     <a href="/project/{{id}}">{{contributions.length}} {{format_plural "Contribution" contributions.length}}</a>
   </div>
-</article>
+</article> --}}
+
+
+<!--Grid column-->
+<div id = "theDiv" class="col-md-4 mb-4">
+  <a class="my-3 text-uppercase badge font-weight-bold" href="/project/{{id}}">
+    <h4>
+      {{title}}
+    </h4>
+    <img class="rounded-circle" id = "randimg" src="https://source.unsplash.com/collection/3348877/34{{@index}}x320/?business-work"
+    data-holder-rendered="true">
+  </a>
+</div>
+<!--Grid column-->

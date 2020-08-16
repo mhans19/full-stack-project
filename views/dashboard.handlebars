@@ -1,64 +1,85 @@
-{{#if projects.length}}
-<div class="new-project-form container m-4">
-  <h3 class = "text-center font-weight-bold">Start A New Project</h2>
-    <form>
-      <div class="form-group row">
-        <label for="project-title" class="col-sm-2 col-form-label font-weight-bold"><img src="https://img.icons8.com/ultraviolet/34/000000/tag-window.png"/> Project Title:</label>
-        <div class="col-sm-12">
-          <input type="text" class="form-control" id="project-title" name="project-title" />
-        </div>
+<div class="jumbotron">
+  <h1 class="display-4">Your Projects</h1>
+  <hr class="my-4">
+  <p class="lead">
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#projectModal" role="button">Create a Project</button>
+    {{#if projects.length}}
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editModal" role="button">Edit a Project</button>
+    {{/if}}
+  </p>
+  <hr class="my-4">
+  {{#if projects.length}}
+  <section class = "font-weight-bold text-center">
+    <!--Grid row-->
+      <div class="row text-center">
+        {{#each projects as |project|}}
+          {{> project-info project}}
+        {{/each}}
       </div>
-      <div class="form-group row">
-        <label for="project-description" class="col-sm-2 col-form-label font-weight-bold"><img src="https://img.icons8.com/ultraviolet/28/000000/pencil.png"/> Description:</label>
-        <div class="col-sm-12">
-          <textarea type="text" class="form-control" id="project-description" name="project-description" rows="5"></textarea>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary btn-block font-weight-bold">CREATE PROJECT <img src="https://img.icons8.com/cotton/28/000000/circled-left--v1.png"/></button>
-        </div>
-      </div>
-    </form>
+      <!--Grid row-->
+  </section>
+  {{else}}
+  <section class = "font-weight-bold text-center">
+    <img src="https://img.icons8.com/ultraviolet/80/000000/crying.png"/>
+    <h2 class = "text-center font-weight-bold">You don't have any projects yet!</h2>
+  </section>
+  {{/if}}
 </div>
-<section class = "font-weight-bold text-center">
-  <h3 class = "text-center font-weight-bold">Your Projects</h3>
-  <div>
-    {{#each projects as |project|}}
-    <div class = "border border-primary rounded my-2">
-        {{> project-info project}}
-        <a href="/project/{{project.id}}">Contribute to This Project!</a>
+{{!-- Project Log Modal --}}
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="projectModalLabel">Create a Project</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="new-project-form">
+          <form class="contribution-form p-4">
+            <div class="form-group row">
+              <label for="project-contributions">Project Title:</label>
+              <input type="text" class="form-control" id="project-title" name="project-title" />
+            </div>
+            <div class="form-group row">
+              <label for="contribution-hours">Project Description:</label>
+              <textarea type="text" class="form-control" id="project-description" name="project-description" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block font-weight-bold">Create Project</button>
+              <button type="button" class="btn btn-light btn-block font-weight-bold" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    {{/each}}
   </div>
-</section>
-{{else}}
-<section class = "font-weight-bold text-center">
-  <img src="https://img.icons8.com/ultraviolet/80/000000/crying.png"/>
-  <h2 class = "text-center font-weight-bold">You don't have any projects yet!</h2>
-</section>
-<div class="new-project-form container m-4">
-  <h4 class = "font-weight-bold">Get started with a new project!</h4>
-    <form>
-      <div class="form-group row">
-        <label for="project-title" class="col-sm-2 col-form-label font-weight-bold"><img src="https://img.icons8.com/ultraviolet/34/000000/tag-window.png"/> Project Title:</label>
-        <div class="col-sm-12">
-          <input type="text" class="form-control" id="project-title" name="project-title" />
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="project-description" class="col-sm-2 col-form-label font-weight-bold"><img src="https://img.icons8.com/ultraviolet/28/000000/pencil.png"/> Description:</label>
-        <div class="col-sm-12">
-          <textarea type="text" class="form-control" id="project-description" name="project-description" rows="5"></textarea>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary btn-block font-weight-bold">CREATE PROJECT <img src="https://img.icons8.com/cotton/28/000000/circled-left--v1.png"/></button>
-        </div>
-      </div>
-    </form>
 </div>
-{{/if}}
-
 <script src="/javascript/add-project.js"></script>
+{{!-- Project Log Modal --}}
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="editModalLabel">Select a Project to Edit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <section class = "font-weight-bold text-center">
+            <!--Grid row-->
+              <div class="row text-center">
+                {{#each projects as |project|}}
+                  <button onclick="location.href='/dashboard/edit/{{project.id}}'" class = "btn btn-primary btn-block font-weight-bold text-center mx-4" type="button">{{title}}</button>
+                {{/each}}
+                <button type="button" class="btn btn-light btn-block font-weight-bold" data-dismiss="modal">Close</button>
+              </div>
+              <!--Grid row-->
+          </section>
+      </div>
+    </div>
+  </div>
+</div>

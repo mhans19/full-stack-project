@@ -1,80 +1,156 @@
-<h2 class = "text-center font-weight-bold">Project Details</h2>
-{{#each this}}
-  <section class = "text-center font-weight-bold text-primary">
-    <h4>{{title}}</h4>
-    <p>{{description}}</p>
-  </section>
-  <div class="row">
+<div class="jumbotron">
+  {{#each this}}
+    <h1 class="display-4">{{title}}</h1>
+    <p class="lead">{{description}}</p>
+  {{/each}}
+  <hr class="my-4">
+  <p class="lead">
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contributionModal" role="button">Contribute To This Project</button>
+  </p>
 </div>
-{{/each}}
+
 {{#if loggedIn}}
-<form class="contribution-form">
-    <h2 class = "text-center font-weight-bold">Contribute to This Project</h2>
-    <div class="form-group row">
-      <label for="project-contributions">Select Contribution Type:</label>
-      <select class="form-control" type="text" name="project-contributions" id="project-contributions" form="contributionForm">
-        <option value="HTML">HTML</option>
-        <option value="CSS">CSS</option>
-        <option value="JavaScript">JavaScript</option>
-        <option value="Node">Node</option>
-      </select>
+<!-- Modal -->
+<div class="modal fade" id="contributionModal" tabindex="-1" role="dialog" aria-labelledby="contributionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="contributionModalLabel">Contribute to This Project</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="contribution-form p-4">
+          <div class="form-group row">
+            <label for="project-contributions">Select Contribution Type:</label>
+            <select class="form-control" type="text" name="project-contributions" id="project-contributions" form="contributionForm">
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Node">Node</option>
+            </select>
+          </div>
+          <div class="form-group row">
+            <label for="contribution-hours">Hours Spent on Contribution:</label>
+            <input class="form-control" type="text" id="contribution-hours" name="contribution-hours">
+          </div>
+          <div class="form-group row">
+              <label for="contribution-description">Contribution Description:</label>
+              <textarea type="text" class="form-control" id="contribution-description" name="contribution-description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold">Submit Contribution</button>
+            <button type="button" class="btn btn-light btn-block font-weight-bold" data-dismiss="modal">Close</button>
+          </div>
+      </form>
+      </div>
     </div>
-    <div class="form-group row">
-      <label for="contribution-hours">Hours Spent on Contribution:</label>
-      <input class="form-control" type="text" id="contribution-hours" name="contribution-hours">
-    </div>
-    <div class="form-group row">
-        <label for="contribution-description">Contribution Description:</label>
-        <textarea type="text" class="form-control" id="contribution-description" name="contribution-description" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block font-weight-bold">Submit Contribution</button>
-    </div>
-</form>
-<script src="/javascript/contribution.js"></script>
-{{/if}}
-<h2 class = "text-center font-weight-bold">Project Contributions</h2>
-<div id="chartContainer" style="height: 370px; width: 100%;">
-    {{!-- This is where chart goes --}}
+  </div>
 </div>
+<script src="/javascript/contribution.js"></script>
+{{else}}
+<div class="modal fade" id="contributionModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container m-6 text-center font-weight-bold pb-3">
+          <img src="https://img.icons8.com/ultraviolet/80/000000/crying.png"/>
+          <h1 class = "fonct-weight-bold">Uh Oh!</h1>
+          <p class='text-secondary'>You must <a class="badge badge-primary" href = "/login">login</a> to contribute to a project!</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+<div class="jumbotron">
+  <h1 class="display-4">Project Contributions</h1>
+  <hr class="my-4">
+  <p class="lead">
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#logModal" role="button">View Contribution Log</button>
+  </p>
+  <hr class="my-4">
+  <canvas id="contChart" width="400px" height="100px">
+   {{!-- This is where chart goes --}}
+  </canvas>
+</div>
+{{!-- Project Log Modal --}}
+<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center" id="contributionModalLabel">All Project Contributions</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{#each this}}
+        {{#each contributions}}
+          <div class="col-sm-12">
+            <h5 class = "font-weight-bold border-top text-center">{{user.username}}</h5>
+            <p class = "border-bottom">
+              Contribution Type: {{this.contribution_type}} <br>
+              Contribution Hours: {{this.contribution_hours}} <br>
+              Contribution Description: {{this.contribution_description}} <br>
+            </p>
+          </div>
+        {{/each}}
+      {{/each}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- Contribution Graphic --}}
 {{#each this}}
   {{#each contributions}}
-    <div class="col-sm-12">
-      <li>
-        {{user.username}} contributed to the project! |
-        Contribution Type: {{this.contribution_type}}
-        |
-        Contribution Hours: {{this.contribution_hours}}
-        |
-        Contribution Description: {{this.contribution_description}}
-      </li>
-    </div>
+  <script>
+  window.onload = function () {
+  var ctx = document.getElementById('contChart');
+  let type = ["{{{this.contribution_type}}}"]; 
+  let hours = ["{{{this.contribution_hours}}}"];
+
+  var data = {
+      labels: type,
+      datasets: [{
+          data: hours,
+          label: "Hours",
+          backgroundColor: 'rgb(245, 146, 37)'
+      }]
+  }
+    var options = {
+      legend: false,
+      scales: {
+          yAxes: [{
+              display: true,
+              ticks: {
+                  beginAtZero: true,
+                  stepSize:10
+              }
+          }]
+      },
+      animation: false
+  };
+  var myBarChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+  });
+    }
+  </script>
   {{/each}}
 {{/each}}
-
-<script src="/javascript/newcontribution.js"></script>
-
-<script>
-window.onload = function () {
-  var options = {
-    animationEnabled: true,
-    axisY: {
-      title: "Hours Contributed"
-    },
-    axisX: {
-      title: "Contribution Type"
-    },
-    data: [{
-      type: "column",
-      yValueFormatString: "#,##0.0#",
-      dataPoints: [
-        { label: "HTML", y: 10 },	
-        { label: "CSS", y: 32 },	
-        { label: "JavaScript", y: 48 },
-        { label: "Node", y: 12 }
-      ]
-    }]
-  };
-  $("#chartContainer").CanvasJSChart(options);
-}
-</script>

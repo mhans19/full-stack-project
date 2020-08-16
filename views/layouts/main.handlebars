@@ -1,46 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-    integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <title>Timed-Out</title>
-</head>
-
-<body>
-  <div class="wrapper">
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+      integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Timed-Out</title>
+  </head>
+  <body>
       <header>
-        <h1>
-          <a href="/">TIMED <img src="https://img.icons8.com/ultraviolet/28/000000/clock.png"/>UT</a>
-        </h1>
-        <nav>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="/">TIMED <img src="https://img.icons8.com/ultraviolet/46/000000/clock.png"/>UT</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           {{#if loggedIn}}
-          <a href="/dashboard"><img src="https://img.icons8.com/ultraviolet/24/000000/folder-invoices.png"/> Your Projects</a>
-          <button id="logout" class="btn-no-style"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Logout</button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" id="logout">Logout <img src="https://img.icons8.com/cotton/22/000000/login-rounded-right--v1.png"/></a>
+              </li>
+              <li>
+                <a class="nav-link" href="/dashboard">Your Projects <img src="https://img.icons8.com/ultraviolet/20/000000/folder-invoices.png"/></a>
+              </li>
+            </ul>
+          </div>
           {{else}}
-          <a href="/login"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Login</a>
-          <a href="/signup"><img src="https://img.icons8.com/cotton/32/000000/login-rounded-right--v1.png"/> Sign-up</a>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login <img src="https://img.icons8.com/cotton/22/000000/login-rounded-right--v1.png"/></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign-up <img src="https://img.icons8.com/cotton/22/000000/login-rounded-right--v1.png"/></a>
+              </li>
+            </ul>
+          </div>
           {{/if}}
         </nav>
       </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for contributing!
-    </footer>
-  </div>
-  {{#if loggedIn}}
-  <script src="/javascript/logout.js"></script>
-  {{/if}}
-
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-</body>
-
+      <main>
+        {{{ body }}}
+      </main>
+      <footer>
+        Thanks for contributing!
+      </footer>
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
