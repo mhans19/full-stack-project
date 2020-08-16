@@ -27,9 +27,7 @@
     "heroku": "^7.42.6",
     "jest": "^26.2.2",
     "mysql2": "^2.1.0",
-    "sequelize": "^6.3.3"
-  },
-  "devDependencies": {
+    "sequelize": "^6.3.3",
     "dotenv": "^8.2.0"
   }
 }
