@@ -1,10 +1,13 @@
 // DEPENDENCIES
-const path = require('path');
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
-const session = require('express-session');
+const path = require('path');
 const helpers = require('./utils/helpers');
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({ helpers });
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // PORT
 const app = express();
@@ -16,19 +19,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // HANDLEBARS
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars')
 
 // SET UP SESSION
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
 const sess = {
-  secret: process.env.SECRET,
+  secret: process.env.SESSION_SECRET || "secret",
   cookie: {
-    maxAge: 30 * 60000,
-    sameSite: 'strict'
+    maxAge: 30 * 60000
   },
   resave: false,
   saveUninitialized: true,
