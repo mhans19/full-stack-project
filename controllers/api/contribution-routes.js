@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Contribution } = require('../../models');
+const { Contribution } = require('../../models/contibution-routes');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
