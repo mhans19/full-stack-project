@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mhans19/timed-out/issues"
   },
@@ -24,10 +24,9 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
-    "heroku": "^7.42.6",
     "jest": "^26.2.2",
     "mysql2": "^2.1.0",
-    "sequelize": "^6.3.4"
+    "sequelize": "^6.3.3"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
