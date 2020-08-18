@@ -1,7 +1,7 @@
 // DEPENDENCIES
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Project, User, Contribution } = require('../models');
+const { Project, User, Contribution } = require('../models/Index');
 // GET ALL FOR DASHBOARD
 router.get('/', withAuth, (req, res) => {
   Project.findAll({

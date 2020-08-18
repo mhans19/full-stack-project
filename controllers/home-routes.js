@@ -1,6 +1,6 @@
 //DEPENDENCIES
 const router = require('express').Router();
-const { Project, User, Contribution } = require('../models');
+const { Project, User, Contribution } = require('../models/Index');
 // GET ALL
 router.get('/', (req, res) => {
     console.log(req.session);
