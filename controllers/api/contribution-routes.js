@@ -1,5 +1,13 @@
 const router = require('express').Router();
 const { Contribution } = require('../../models');
+
+var requireStack = require('require-stack')
+try{
+  requireStack('../../models')
+}catch(e){
+  console.log(e.stack)
+}
+
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {

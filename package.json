@@ -27,6 +27,7 @@
     "jest": "^26.2.2",
     "lodash": "^4.17.20",
     "mysql2": "^2.1.0",
+    "require-stack": "^1.0.2",
     "sequelize": "^6.3.3"
   },
   "devDependencies": {
